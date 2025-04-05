@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaana - Music Website</title>
+    <!-- magnific-popup css cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <!-- font-awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- custom css link -->
+    <style>
+        :root {
+            --primary: #ff4757;
+            --secondary: #2f3542;
+            --light: #f1f2f6;
+            --dark: #1e272e;
+            --gradient: linear-gradient(135deg, #ff4757, #ff6b81);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-decoration: none;
+            outline: none;
+            border: none;
+            text-transform: capitalize;
+            transition: all .3s linear;
+        }
+        
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+            scroll-padding-top: 7rem;
+            overflow-x: hidden;
+        }
+        
+        body {
+            background: var(--light);
+            color: var(--dark);
+        }
+        
+        section {
+            padding: 3rem 9%;
+        }
+        
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: .8rem 2.5rem;
+            background: var(--gradient);
+            color: #fff;
+            font-size: 1.7rem;
+            border-radius: 5rem;
+            cursor: pointer;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 .8rem 1.5rem rgba(0, 0, 0, .2);
+        }
+        
+        .heading {
+            text-align: center;
+            color: var(--secondary);
+            font-size: 4rem;
+            padding-bottom: 3rem;
+            text-transform: uppercase;
+        }
+        
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            padding: 2rem 9%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .header .logo {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .header .logo i {
+            color: var(--primary);
+            padding-right: .5rem;
+        }
+        
+        .header .navbar a {
+            font-size: 1.7rem;
+            color: var(--dark);
+            margin: 0 1rem;
+        }
+        
+        .header .navbar a:hover {
+            color: var(--primary);
+        }
+        
+        .header .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .signup-btn, .login-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 5rem;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+        
+        .signup-btn {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .login-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .login-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            margin-right: 2rem;
+        }
+        
+        .search-input {
+            padding: 1rem 1.5rem 1rem 4rem;
+            border-radius: 5rem;
+            border: 1px solid #ddd;
+            width: 25rem;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            width: 30rem;
+            border-color: var(--primary);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        /* Home Section */
+        .home {
+            padding-top: 10rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Images/background.webp') no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .home .content {
+            max-width: 60rem;
+        }
+        
+        .home .content h3 {
+            font-size: 6rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+        
+        .home .content p {
+            font-size: 1.7rem;
+            line-height: 2;
+            padding-bottom: 1rem;
+        }
+        
+        /* About Section */
+        .about .row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+        
+        .about .row .image {
+            flex: 1 1 40rem;
+        }
+        
+        .about .row .image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        }
+        
+        .about .row .content {
+            flex: 1 1 40rem;
+        }
+        
+        .about .row .content h3 {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            padding-bottom: 1rem;
+        }
+        
+        .about .row .content p {
+            font-size: 1.6rem;
+            color: #666;
+            padding: 1rem 0;
+            line-height: 2;
+        }
+        
+        .about .row .content ul li {
+            list-style: none;
+            padding: 1.5rem 0;
+            font-size: 1.7rem;
+            color: var(--secondary);
+        }
+        
+        .about .row .content ul li i {
+            color: var(--primary);
+            padding-right: 1rem;
+        }
+        
+        .about .row .content ul li p {
+            font-size: 1.4rem;
+            padding-left: 2.5rem;
+            color: #777;
+            font-style: italic;
+        }
+        
+        /* Artist Section */
+        .artist .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            gap: 2rem;
+        }
+        
+        .artist .box {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .artist .box:hover {
+            transform: translateY(-1rem);
+        }
+        
+        .artist .box .image {
+            height: 25rem;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .artist .box .image img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .artist .box:hover .image img {
+            transform: scale(1.1);
+        }
+        
+        .artist .box .content {
+            padding: 2rem;
+        }
+        
+        .artist .box .content h5 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .artist .box .content h3 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            padding: .5rem 0;
+        }
+        
+        /* Audio Player Customization */
+        .Audio audio {
+            width: 100%;
+            margin-top: 1.5rem;
+            border-radius: 0;
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background-color: var(--light);
+        }
+        
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-mute-button {
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+        
+        /* Albums Section */
+        .Albums .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+            gap: 2rem;
+        }
+        
+        .Albums .box {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .Albums .box:hover {
+            transform: translateY(-1rem);
+        }
+        
+        .Albums .box .image {
+            height: 25rem;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .Albums .box .image img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .Albums .box .content {
+            padding: 2rem;
+        }
+        
+        .Albums .box .content h3 {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        
+        /* Gallery Section */
+        .gallery .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding-bottom: 2rem;
+        }
+        
+        .gallery .controls .button {
+            margin: .5rem 1rem;
+            padding: .7rem 2rem;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            background: white;
+            border-radius: 5rem;
+            cursor: pointer;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        }
+        
+        .gallery .controls .button.active {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .gallery .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery .box-container a {
+            height: 25rem;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        }
+        
+        .gallery .box-container a img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery .box-container a:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Podcasts Section */
+        .produced-content {
+            background: var(--light);
+            padding: 8rem 9%;
+        }
+        
+        .video-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-content {
+            padding: 3rem;
+        }
+        
+        .video-content h3 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .video-content p {
+            font-size: 1.6rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+
+        /* Subscribe Section */
+        .subscribe {
+            background: var(--gradient);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .subscribe .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .subscribe .row .content {
+            flex: 1 1 40rem;
+        }
+        
+        .subscribe .row .content p {
+            font-size: 2.2rem;
+            color: white;
+            padding-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .subscribe .row .inputBox {
+            flex: 1 1 40rem;
+            display: flex;
+            background: white;
+            padding: .5rem;
+            border-radius: 5rem;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        }
+        
+        .subscribe .row .inputBox .email {
+            width: 100%;
+            padding: 0 1.5rem;
+            font-size: 1.7rem;
+            text-transform: none;
+            color: #333;
+        }
+        
+        .subscribe .row .inputBox .btn {
+            margin-top: 0;
+            border-radius: 5rem;
+        }
+        
+        /* Footer Section */
+        .footer {
+            background: var(--secondary);
+            text-align: center;
+        }
+        
+        .footer .share {
+            padding: 2rem 0;
+        }
+        
+        .footer .share a {
+            height: 5rem;
+            width: 5rem;
+            line-height: 5rem;
+            font-size: 2rem;
+            color: white;
+            background: rgba(255, 255, 255, .1);
+            border-radius: 50%;
+            margin: 0 .3rem;
+        }
+        
+        .footer .share a:hover {
+            background: var(--primary);
+            transform: rotate(360deg);
+        }
+        
+        .footer .credit {
+            font-size: 2rem;
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .footer .credit span {
+            color: var(--primary);
+        }
+        
+        /* Playlist Sidebar */
+        .playlist-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .playlist-sidebar.active {
+            right: 0;
+        }
+        
+        .playlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .playlist-header h3 {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        
+        .close-playlist {
+            font-size: 2.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .playlist-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        
+        .playlist-item-info h4 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .playlist-item-info p {
+            font-size: 1.2rem;
+            color: #777;
+        }
+        
+        .playlist-toggle {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            background: var(--gradient);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            html {
+                font-size: 55%;
+            }
+            
+            section {
+                padding: 3rem 2rem;
+            }
+            
+            .header {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .home .content h3 {
+                font-size: 4rem;
+            }
+            
+            .search-input {
+                width: 20rem;
+            }
+            
+            .search-input:focus {
+                width: 25rem;
+            }
+            
+            .playlist-sidebar {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 450px) {
+            html {
+                font-size: 50%;
+            }
+            
+            .search-container {
+                display: none;
+            }
+            
+            .playlist-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-------------------------------------------------------header --------------------------------------------------->
+    <header class="header">
+        <a href="#" class="logo"> <i class="fas fa-music"></i> Gaana</a>
+
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#artist">artist</a>
+            <a href="#Albums">albums</a>
+            <a href="#gallery">gallery</a>
+            <a href="#podcasts">podcasts</a>
+            <a href="login-page/signup.html" class="signup-btn">Signup</a>
+            <a href="login-page/login.html" class="login-btn" id="loginButton">Login</a>
+        </nav>
+
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search songs, artists...">
+        </div>
+
+        <div class="nav-buttons">
+            <button class="menu"><i class="navbar"></i></button>
+        </div>
+    </header>
+
+    <!-------------------------------------------------------home---------------------------------------------------->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>get the <br> new songs</h3>
+            <p>Discover millions of songs from Bollywood, Hollywood, Sandalwood and more. Stream your favorite music anytime, anywhere.</p>
+            <a href="index5.html" class="btn">explore now</a>
+        </div>
+    </section>
+
+    <!--------------------------------------------------about------------------------------------------------------>
+    <section class="about" id="about">
+        <h1 class="heading">Bas Bajna Chahiye Gaana</h1>
+
+        <div class="row">
+            <div class="content">
+                <h3>Bas Bajna Chahiye Gaana</h3>
+                <p>Gaana is your gateway to the best and latest in music, offering over many songs across diverse languages including Hindi, English, Kannada, and many more tracks. Stream your favourite songs to enjoy anytime, anywhere..!</p>
+                <ul>
+                    <li><i class="fab fa-soundcloud"></i>Bollywood
+                        <p>"Kehata yeh pal khud se nikal jeete hai chal..."</p>
+                    </li>
+                    <li><i class="fab fa-spotify"></i>Sandalwood
+                        <p>"The fragrance of Sandalwood and rosebay doesn't travel far.But the fragrance of virtue rises to the heaven..."</p>
+                    </li>
+                    <li><i class="fas fa-microphone"></i>Hollywood
+                        <p>"Hollywood is wonderfull.Any one who doesn't like it is either crazy or sobber.."</p>
+                    </li>
+                </ul>
+                <a href="login page/read more.html" class="btn">read more</a>
+            </div>
+
+            <div class="image">
+                <img src="Images/image.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-------------------------------------------------artist------------------------------------------------>
+    <section class="artist" id="artist">
+        <h1 class="heading">the artist</h1>
+
+        <div class="box-container">
+            <div class="box">
+                <div class="image">
+                    <img src="Images/a.webp" alt="">
+                </div>
+                <div class="content">
+                    <h5>vocalist</h5>
+                    <h3>SP Balasubramanyam</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/Arijit Singh.mp3" type="Audio/mp3">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/arjitalbum.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h5>vocalist</h5>
+                    <h3>Arjit Singh</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/Anuv Jain.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/vijay.jpeg" alt="">
+                </div>
+                <div class="content">
+                    <h5>vocalist</h5>
+                    <h3>Vijay Prakash</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/Anuv Jain.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/anuvjain.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h5>vocalist</h5>
+                    <h3>Anuv Jain</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/Anuv Jain.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/sonunigam.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h5>vocalist</h5>
+                    <h3>Sonu Nigam</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/Sonu Nigam.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/sanchithegde.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h5>vocalist</h5>
+                    <h3>Sanchit Hegde</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/Sanjith Hegde.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    
+
+    <!----------------------------------------------Albums------------------------------------------------------>
+    <section class="Albums" id="Albums">
+        <h1 class="heading">Albums</h1>
+
+        <div class="box-container">
+            <div class="box">
+                <div class="image">
+                    <img src="Images/bollywoodcover.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>ALL TIME BEST<br>BOLLYWOOD SONGS</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/All time best bollwood.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/album6.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>BOLLYWOOD MASH</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/hindi mashup.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/album3.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>HOLLYWOOD HITS</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/Hollywood Mashup.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/album7.jpeg" alt="">
+                </div>
+                <div class="content">
+                    <h3>LOFI MASHUP</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/nonstop Love Mashup.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/appu.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>APPU HITS</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/appu hit.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Images/album5.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>SANDALWOOD HITS</h3>
+                    <div class="Audio">
+                        <audio controls>
+                            <source src="Music/Non Stop Kannada Mashups.mp3" type="Audio/mp3">
+                          </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!---------------------------------------------gallery--------------------------------------------->
+    <section class="gallery" id="gallery">
+        <h1 class="heading">our gallery</h1>
+
+        <ul class="controls">
+            <li class="button active" data-filter="all">all</li>
+            <li class="button" data-filter="music">music</li>
+            <li class="button" data-filter="party">party</li>
+            <li class="button" data-filter="performance">performance</li>
+            <li class="button" data-filter="stageshow">stage show</li>
+        </ul>
+
+        <div class="box-container">
+            <a href="Images/photo1.jpg" class="image music">
+                <img src="Images/photo1.jpg" alt="">
+            </a>
+
+            <a href="Images/photo2.webp" class="image music">
+                <img src="Images/photo2.webp" alt="">
+            </a>
+
+            <a href="Images/photo3.jpg" class="image music">
+                <img src="Images/photo3.jpg" alt="">
+            </a>
+
+            <a href="Images/party4.jpg" class="image party">
+                <img src="Images/party4.jpg" alt="">
+            </a>
+
+            <a href="Images/party5.jpg" class="image party">
+                <img src="Images/party5.jpg" alt="">
+            </a>
+
+            <a href="Images/performance7.jpg" class="image performance">
+                <img src="Images/performance7.jpg" alt="">
+            </a>
+
+            <a href="Images/performance8.jpg" class="image performance">
+                <img src="Images/performance8.jpg" alt="">
+            </a>
+
+            <a href="Images/stageshow.webp" class="image stageshow">
+                <img src="Images/stageshow.webp" alt="">
+            </a>
+
+            <a href="Images/stageshow9.jpg" class="image stageshow">
+                <img src="Images/stageshow9.jpg" alt="">
+            </a>
+        </div>
+    </section>
+
+    <!------------------------------------------------------ podcast-------------------------------------------------->
+    <section class="produced-content" id="podcasts">
+        <h1 class="heading">Produced Content</h1>
+
+        <div class="video-section">
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/JLf2YK4Z_oc" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+                <div class="video-content">
+                    <h3>Music Production Timelapse</h3>
+                    <p>Watch our team create a hit song from scratch in this behind-the-scenes studio timelapse.</p>
+                    <a href="#" class="btn">Watch Full Video</a>
+                </div>
+            </div>
+            
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/r6tU3GvJ5so" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+                <div class="video-content">
+                    <h3>Concert Preparation</h3>
+                    <p>See how we transform an empty venue into a spectacular music festival in just 24 hours.</p>
+                    <a href="#" class="btn">Watch Full Video</a>
+                </div>
+            </div>
+                            
+            </div>
+        </div>
+    </section>
+
+
+    <!------------------------------------------------------ subscribe -------------------------------------------------------->
+    <section class="subscribe">
+        <div class="row">
+            <div class="content">
+                <p>subscribe</p>
+            </div>
+
+            <div class="inputBox">
+                <input type="email" class="email" placeholder="Your email">
+                <input type="button" value="subscribe" class="btn">
+            </div>
+        </div>
+    </section>
+
+    <!------------------------------------------------------------ footer-------------------------------------------------->
+    <section class="footer">
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="https://www.instagram.com/ajay_angadi123" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+        </div>
+
+        <div class="credit">created by <span>VS GROUP</span> | all rights reserved!</div>
+    </section>
+
+    <!-- Playlist Sidebar -->
+    <div class="playlist-sidebar">
+        <div class="playlist-header">
+            <h3>Your Playlist</h3>
+            <i class="fas fa-times close-playlist"></i>
+        </div>
+        
+        <div class="playlist-content">
+            <div class="playlist-item">
+                <img src="Images/arjitalbum.jpg" alt="Song">
+                <div class="playlist-item-info">
+                    <h4>Tum Hi Ho</h4>
+                    <p>Arijit Singh</p>
+                </div>
+            </div>
+            
+            <div class="playlist-item">
+                <img src="Images/anuvjain.jpg" alt="Song">
+                <div class="playlist-item-info">
+                    <h4>Baarishein</h4>
+                    <p>Anuv Jain</p>
+                </div>
+            </div>
+            
+            <div class="playlist-item">
+                <img src="Images/sonunigam.jpg" alt="Song">
+                <div class="playlist-item-info">
+                    <h4>Kal Ho Naa Ho</h4>
+                    <p>Sonu Nigam</p>
+                </div>
+            </div>
+            
+            <div class="playlist-item">
+                <img src="Images/bollywoodcover.jpg" alt="Song">
+                <div class="playlist-item-info">
+                    <h4>Bollywood Hits</h4>
+                    <p>Various Artists</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="playlist-toggle">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <!-- jquery cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- magnific popup js cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    
+    <script>
+        // Gallery Filter
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.button');
+            const images = document.querySelectorAll('.image');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    images.forEach(image => {
+                        if (filter === 'all' || image.classList.contains(filter)) {
+                            image.style.display = 'inline-block';
+                        } else {
+                            image.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Playlist Toggle
+            const playlistToggle = document.querySelector('.playlist-toggle');
+            const playlistSidebar = document.querySelector('.playlist-sidebar');
+            const closePlaylist = document.querySelector('.close-playlist');
+            
+            playlistToggle.addEventListener('click', function() {
+                playlistSidebar.classList.add('active');
+            });
+            
+            closePlaylist.addEventListener('click', function() {
+                playlistSidebar.classList.remove('active');
+            });
+            
+            // Search Functionality
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    const searchTerm = this.value.toLowerCase();
+                    alert('Searching for: ' + searchTerm);
+                    // In a real implementation, you would filter content based on search term
+                }
+            });
+            
+            // Audio Player Customization
+            document.querySelectorAll('audio').forEach(audio => {
+                audio.addEventListener('play', function() {
+                    // Pause all other audio elements when one plays
+                    document.querySelectorAll('audio').forEach(otherAudio => {
+                        if (otherAudio !== audio) {
+                            otherAudio.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
