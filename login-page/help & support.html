@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help & Support | Gaana Music</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff4757;
+      --primary-light: #ff6b81;
+      --secondary: #2f3542;
+      --light: #f1f2f6;
+      --dark: #1e272e;
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: var(--dark);
+      padding: 20px;
+    }
+
+    .support-container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      color: var(--primary);
+      font-size: 2rem;
+    }
+
+    .header p {
+      font-size: 1rem;
+      color: var(--secondary);
+    }
+
+    .content h2 {
+      margin-top: 1.5rem;
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--secondary);
+    }
+
+    /* FAQ Section */
+    .faq {
+      margin-top: 1rem;
+    }
+
+    .faq-item {
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question h3 {
+      font-size: 1rem;
+    }
+
+    .faq-question i {
+      transition: var(--transition);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 100px;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    /* Contact & Support Form */
+    .contact-info {
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      margin: 5px 0;
+    }
+
+    .form-group {
+      margin-top: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: var(--transition);
+      background-color: #f9f9f9;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(255, 107, 129, 0.2);
+      outline: none;
+      background-color: white;
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    button:hover {
+      background: var(--primary-light);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="support-container">
+    <div class="header">
+      <h1>Help & Support</h1>
+      <p>Need assistance? Find answers or contact us below.</p>
+    </div>
+
+    <div class="content">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How do I reset my password?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>You can reset your password in the settings section under "Account Security".</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How do I contact support?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>You can reach us via email at support@gaanamusic.com or call us at (123) 456-7890.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I change my subscription plan?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, you can upgrade or downgrade your plan in the "Subscription" section.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>📞 Contact Support</h2>
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> Email: support@gaanamusic.com</p>
+        <p><i class="fas fa-phone"></i> Phone: (123) 456-7890</p>
+        <p><i class="fas fa-clock"></i> Support Hours: 9 AM - 6 PM (Mon - Fri)</p>
+      </div>
+
+      <h2>📝 Submit a Support Request</h2>
+      <form id="supportForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" rows="4" placeholder="Describe your issue" required></textarea>
+        </div>
+
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      faqItems.forEach(item => {
+        item.addEventListener("click", () => {
+          item.classList.toggle("active");
+        });
+      });
+
+      document.getElementById("supportForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Your support request has been submitted. We'll contact you soon.");
+        this.reset();
+      });
+    });
+  </script>
+
+</body>
+</html>

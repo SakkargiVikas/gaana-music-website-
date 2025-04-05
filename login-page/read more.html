@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read More Page | Gaana</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #ff4757;
+        }
+        h2 {
+            color: #2f3542;
+        }
+        p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #e84118;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bas Bajna Chahiye Gaana</h1>
+
+    <!-- Section 1 -->
+    <div class="container">
+        <h2>🎵 What is Gaana?</h2>
+        <p>
+            Gaana is India's largest music streaming service with millions of songs.  
+            <span id="moreText1" class="hidden">
+                You can explore Bollywood, indie, regional, and international music.  
+                The platform provides high-quality streaming and curated playlists.
+            </span>
+        </p>
+        <button onclick="toggleText(1)">Read More</button>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="container">
+        <h2>🔥 Features of Gaana</h2>
+        <p>
+            Gaana offers ad-free music, offline downloads, and exclusive content.  
+            <span id="moreText2" class="hidden">
+                Users can follow their favorite artists, create playlists, and enjoy podcasts.  
+                Gaana Plus offers premium features for an enhanced experience.
+            </span>
+        </p>
+        <button onclick="toggleText(2)">Read More</button>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="container">
+        <h2>📢 Why Choose Gaana?</h2>
+        <p>
+            Gaana provides a seamless music experience with personalized recommendations.  
+            <span id="moreText3" class="hidden">
+                The app is user-friendly, with a huge library of songs across all genres.  
+                Whether you love trending hits or old classics, Gaana has it all.
+            </span>
+        </p>
+        <button onclick="toggleText(3)">Read More</button>
+    </div>
+
+    <script>
+        function toggleText(section) {
+            let moreText = document.getElementById("moreText" + section);
+            let btn = event.target;
+
+            if (moreText.classList.contains("hidden")) {
+                moreText.classList.remove("hidden");
+                btn.textContent = "Read Less";
+            } else {
+                moreText.classList.add("hidden");
+                btn.textContent = "Read More";
+            }
+        }
+    </script>
+
+</body>
+</html>

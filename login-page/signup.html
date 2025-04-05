@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Gaana Music</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ff4757;
+      --secondary: #2f3542;
+      --light: #f1f2f6;
+      --dark: #1e272e;
+      --gradient: linear-gradient(135deg, #ff4757, #ff6b81);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--dark);
+    }
+    
+    .wrapper {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      width: 100%;
+      max-width: 450px;
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--gradient);
+    }
+    
+    #error-message {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      min-height: 1.2rem;
+    }
+    
+    form {
+      margin: 2rem 0;
+    }
+    
+    form div {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+    }
+    
+    label svg {
+      fill: var(--primary);
+    }
+    
+    input {
+      width: 100%;
+      padding: 15px 15px 15px 45px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.2);
+      outline: none;
+    }
+    
+    button[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 1rem;
+    }
+    
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+    }
+    
+    .wrapper p {
+      margin: 1rem 0;
+      color: #666;
+    }
+    
+    .wrapper a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .wrapper a:hover {
+      text-decoration: underline;
+    }
+    
+    .home-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .home-btn:hover {
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+    }
+    
+    .password-strength {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      text-align: left;
+      color: #666;
+    }
+    
+    .strength-meter {
+      height: 5px;
+      background: #ddd;
+      border-radius: 5px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+    
+    .strength-meter-fill {
+      height: 100%;
+      width: 0%;
+      background: #ff4757;
+      transition: width 0.3s, background 0.3s;
+    }
+    
+    .terms {
+      font-size: 0.8rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    
+    .terms a {
+      color: var(--primary);
+    }
+    
+    @media (max-width: 480px) {
+      .wrapper {
+        padding: 2rem;
+        margin: 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1><i class="fas fa-music" style="margin-right: 10px;"></i>Join Gaana</h1>
+    <p id="error-message"></p>
+    <form id="form">
+      <div>
+        <label for="firstname-input">
+          <i class="fas fa-user"></i>
+        </label>
+        <input type="text" name="firstname" id="firstname-input" placeholder="Username" required>
+      </div>
+      <div>
+        <label for="email-input">
+          <i class="fas fa-envelope"></i>
+        </label>
+        <input type="email" name="email" id="email-input" placeholder="Email" required>
+      </div>
+      <div>
+        <label for="password-input">
+          <i class="fas fa-lock"></i>
+        </label>
+        <input type="password" name="password" id="password-input" placeholder="Password" required>
+        <div class="password-strength">
+          Password strength: <span id="strength-text">Weak</span>
+          <div class="strength-meter">
+            <div class="strength-meter-fill" id="strength-meter"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="repeat-password-input">
+          <i class="fas fa-lock"></i>
+        </label>
+        <input type="password" name="repeat-password" id="repeat-password-input" placeholder="Confirm Password" required>
+      </div>
+      
+      <div class="terms">
+        By signing up, you agree to our <a href="Service.html">Terms of Service</a> and <a href="Policy.html">Privacy Policy</a>
+      </div>
+      
+      <button type="submit">Create Account <i class="fas fa-user-plus" style="margin-left: 5px;"></i></button>
+    </form>
+    
+    <p>Already have an account? <a href="login.html">Log in</a></p>
+    <a href="../index2.html" class="home-btn"><i class="fas fa-home" style="margin-right: 5px;"></i> Back to Home</a>
+  </div>
+
+  <script>
+    document.getElementById("form").addEventListener("submit", async function(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById("firstname-input").value;
+      const email = document.getElementById("email-input").value;
+      const password = document.getElementById("password-input").value;
+      const repeatPassword = document.getElementById("repeat-password-input").value;
+      const errorMessage = document.getElementById("error-message");
+      
+      // Reset error message
+      errorMessage.textContent = "";
+      
+      // Validation
+      if (!username || !email || !password || !repeatPassword) {
+        errorMessage.textContent = "Please fill in all fields";
+        return;
+      }
+      
+      if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        errorMessage.textContent = "Please enter a valid email address";
+        return;
+      }
+      
+      if (password !== repeatPassword) {
+        errorMessage.textContent = "Passwords do not match";
+        return;
+      }
+      
+      if (password.length < 8) {
+        errorMessage.textContent = "Password must be at least 8 characters";
+        return;
+      }
+      
+      // Show loading state
+      errorMessage.textContent = "Creating your account...";
+      errorMessage.style.color = "green";
+      
+      try {
+        // Make API call to your backend
+        const response = await fetch('http://localhost:5000/api/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: username,
+            email: email,
+            password: password
+          }),
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          errorMessage.textContent = "Account created successfully! Redirecting...";
+          // Redirect to login page after successful signup
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 1500);
+        } else {
+          errorMessage.style.color = "#ff4757";
+          errorMessage.textContent = data.message || "Error creating account";
+        }
+      } catch (error) {
+        errorMessage.style.color = "#ff4757";
+        errorMessage.textContent = "An error occurred. Please try again.";
+        console.error("Signup error:", error);
+      }
+    });
+    
+    // Password strength indicator
+    document.getElementById("password-input").addEventListener("input", function() {
+      const password = this.value;
+      const strengthMeter = document.getElementById("strength-meter");
+      const strengthText = document.getElementById("strength-text");
+      
+      // Calculate strength
+      let strength = 0;
+      if (password.length >= 8) strength += 1;
+      if (password.match(/[a-z]/)) strength += 1;
+      if (password.match(/[A-Z]/)) strength += 1;
+      if (password.match(/[0-9]/)) strength += 1;
+      if (password.match(/[^a-zA-Z0-9]/)) strength += 1;
+      
+      // Update meter and text
+      const width = strength * 20;
+      strengthMeter.style.width = width + "%";
+      
+      if (strength <= 1) {
+        strengthMeter.style.backgroundColor = "#ff4757";
+        strengthText.textContent = "Weak";
+      } else if (strength <= 3) {
+        strengthMeter.style.backgroundColor = "#ffa502";
+        strengthText.textContent = "Medium";
+      } else {
+        strengthMeter.style.backgroundColor = "#2ed573";
+        strengthText.textContent = "Strong";
+      }
+    });
+    
+    // Show/hide password toggle
+    const passwordInput = document.getElementById("password-input");
+    const confirmPasswordInput = document.getElementById("repeat-password-input");
+    const passwordLabel = passwordInput.previousElementSibling;
+    const confirmPasswordLabel = confirmPasswordInput.previousElementSibling;
+    
+    passwordLabel.innerHTML = '<i class="fas fa-lock"></i>';
+    passwordLabel.style.cursor = "pointer";
+    confirmPasswordLabel.innerHTML = '<i class="fas fa-lock"></i>';
+    confirmPasswordLabel.style.cursor = "pointer";
+    
+    passwordLabel.addEventListener("click", function() {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordLabel.innerHTML = '<i class="fas fa-unlock"></i>';
+      } else {
+        passwordInput.type = "password";
+        passwordLabel.innerHTML = '<i class="fas fa-lock"></i>';
+      }
+    });
+    
+    confirmPasswordLabel.addEventListener("click", function() {
+      if (confirmPasswordInput.type === "password") {
+        confirmPasswordInput.type = "text";
+        confirmPasswordLabel.innerHTML = '<i class="fas fa-unlock"></i>';
+      } else {
+        confirmPasswordInput.type = "password";
+        confirmPasswordLabel.innerHTML = '<i class="fas fa-lock"></i>';
+      }
+    });
+  </script>
+</body>
+</html>

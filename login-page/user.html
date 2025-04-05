@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaana Music - User Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: white;
+            padding: 20px;
+        }
+        
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #040404;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .profile-header:hover {
+            background: linear-gradient(135deg, #ff6b81, #ff4757);
+        }
+        
+        .profile-header h2 {
+            font-size: 24px;
+        }
+        
+        .profile-content {
+            display: none;
+            padding: 25px;
+        }
+        
+        .profile-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-field {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .profile-field:last-child {
+            border-bottom: none;
+        }
+        
+        .field-label {
+            font-weight: 600;
+            color: #ff4757;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .field-value {
+            font-size: 16px;
+            color: white;
+        }
+        
+        .change-password {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ff4757;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .change-password:hover {
+            color: #08e617;
+            text-decoration: underline;
+        }
+        
+        .unique-id {
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            color: #3dd280;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header" id="profileHeader">
+            <h2>Vikas Sakkargi</h2>
+            <p>Click to view profile details</p>
+        </div>
+        
+        <div class="profile-content" id="profileContent">
+            <div class="profile-field">
+                <span class="field-label">Full Name</span>
+                <span class="field-value">Vikas Sakkargi</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Username</span>
+                <span class="field-value">vikas.sakkargi</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Email</span>
+                <span class="field-value">vikassakkargi@email.com</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Phone Number</span>
+                <span class="field-value">+91 9876543210</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Password</span>
+                <span class="field-value">••••••••</span>
+                <a href="reset password.html" class="change-password">Change Password</a>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Unique ID</span>
+                <span class="field-value unique-id">USR-5A3K-2023-7894</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileHeader = document.getElementById('profileHeader');
+            const profileContent = document.getElementById('profileContent');
+            
+            profileHeader.addEventListener('click', function() {
+                profileContent.classList.toggle('active');
+                
+                const clickText = profileHeader.querySelector('p');
+                if (profileContent.classList.contains('active')) {
+                    clickText.textContent = 'Click to hide profile details';
+                } else {
+                    clickText.textContent = 'Click to view profile details';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logout | Gaana Music</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff4757;
+      --primary-light: #ff6b81;
+      --secondary: #2f3542;
+      --light: #f1f2f6;
+      --dark: #1e272e;
+      --success: #2ed573;
+      --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+    
+    .wrapper {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 450px;
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transform: translateY(0);
+      transition: var(--transition);
+      animation: fadeInUp 0.6s ease-out;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .wrapper:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+    
+    .user-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+      display: block;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .user-email {
+      color: #666;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+    
+    .confirmation-text {
+      color: #666;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    button {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 71, 87, 0.05);
+      transform: translateY(-2px);
+    }
+    
+    .loading {
+      position: relative;
+      color: transparent;
+    }
+    
+    .loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      transform: translate(-50%, -50%);
+    }
+    
+    .btn-secondary .loading::after {
+      border: 3px solid rgba(255, 71, 87, 0.1);
+      border-top-color: var(--primary);
+    }
+    
+    .logout-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    
+    .logout-animation.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .logout-spinner {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(255, 71, 87, 0.2);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 2rem;
+    }
+    
+    .logout-message {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-top: 1rem;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .wrapper {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      
+      .user-avatar {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Removed logo and centered user photo -->
+    <img src="../user.png" alt="User" class="user-avatar">
+    <h1>Logout</h1>
+    <p class="user-email">vikasssakkargi@gmail.com</p>
+    <p class="confirmation-text">Are you sure you want to log out? You'll need to sign in again to access your playlists and preferences.</p>
+    
+    <div class="btn-group">
+      <button class="btn-secondary" id="cancelBtn">Cancel</button>
+      <button class="btn-primary" id="logoutBtn">Log Out</button>
+    </div>
+  </div>
+  
+  <div class="logout-animation" id="logoutAnimation">
+    <div class="logout-spinner"></div>
+    <p class="logout-message">Logging you out...</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutBtn = document.getElementById('logoutBtn');
+      const cancelBtn = document.getElementById('cancelBtn');
+      const logoutAnimation = document.getElementById('logoutAnimation');
+      
+      // Cancel button - redirect to index2.html
+      cancelBtn.addEventListener('click', function() {
+        window.location.href = '../index.html';
+      });
+      
+      // Logout button - show animation and redirect to login.html
+      logoutBtn.addEventListener('click', function() {
+        logoutBtn.classList.add('loading');
+        logoutAnimation.classList.add('active');
+        
+        setTimeout(function() {
+          window.location.href = 'login.html';
+        }, 2000);
+      });
+      
+      // Add ripple effect to buttons
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          const ripple = document.createElement('span');
+          ripple.classList.add('ripple');
+          const rect = button.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size/2;
+          const y = e.clientY - rect.top - size/2;
+          
+          ripple.style.width = ripple.style.height = `${size}px`;
+          ripple.style.left = `${x}px`;
+          ripple.style.top = `${y}px`;
+          
+          button.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
